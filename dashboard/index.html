@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar: pre-token protocols, ranked by what a launch could be worth</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="brand">
+    <span class="scope" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div>
+      <h1>Launch Radar</h1>
+      <p class="tagline">Protocols that record no token yet, ranked by what their record says a launch would be worth, each with a farm plan.</p>
+    </div>
+  </div>
+  <dl class="stamp">
+    <div><dt>Snapshot</dt><dd id="stamp-date">-</dd></div>
+    <div><dt>Model</dt><dd id="stamp-model">-</dd></div>
+    <div><dt>Comparables</dt><dd id="stamp-comps">-</dd></div>
+  </dl>
+</header>
+
+<section class="kpis" id="kpis" aria-label="Snapshot totals"></section>
+
+<nav class="tabs" role="tablist" aria-label="Views">
+  <button role="tab" id="tab-board" aria-selected="true" data-view="board">Board</button>
+  <button role="tab" id="tab-live" aria-selected="false" data-view="live">Live tokens</button>
+  <button role="tab" id="tab-method" aria-selected="false" data-view="method">How it is priced</button>
+</nav>
+
+<main>
+  <section id="view-board" class="view">
+    <div class="toolbar">
+      <label class="search">
+        <span>Filter</span>
+        <input id="q" type="search" placeholder="protocol, category or chain" autocomplete="off" spellcheck="false">
+      </label>
+      <label class="sort">
+        <span>Sort</span>
+        <select id="sort">
+          <option value="implied">Implied value</option>
+          <option value="tvl">TVL</option>
+          <option value="growth">7d change</option>
+          <option value="age">Track record</option>
+          <option value="name">Name</option>
+        </select>
+      </label>
+      <label class="toggle">
+        <input id="watchonly" type="checkbox">
+        <span id="watchonly-cap">Watchlist only (40)</span>
+      </label>
+      <p class="count" id="count">-</p>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Category filter"></div>
+    <div class="grid">
+      <div class="tablewrap">
+        <table id="board">
+          <thead>
+            <tr>
+              <th class="num">#</th>
+              <th>Protocol</th>
+              <th>Category</th>
+              <th class="num">TVL</th>
+              <th class="num">7d</th>
+              <th class="num">Record</th>
+              <th class="num">Implied value</th>
+              <th class="barcol" aria-label="Share of rank 1"></th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <aside class="detail" id="detail" aria-live="polite">
+        <p class="empty">Pick a row to read its numbers and its farm plan.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="view-live" class="view" hidden>
+    <p class="lede">These protocols record a token that already trades. The board never ranks them: their value is the market's, not a model's. Each is the comparable a pre-token protocol in the same category is priced against.</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Protocol</th><th>Category</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">Cap / TVL</th><th class="num">7d</th></tr>
+        </thead>
+        <tbody id="live-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="view-method" class="view" hidden>
+    <div class="method">
+      <article>
+        <h2>The three factors</h2>
+        <p><b>Multiple.</b> Every protocol in the snapshot that records both a market cap and a TVL above $5M is a comparable: market cap over TVL is what the market pays for that business. A category with at least four comparables sets the multiple for pre-token protocols in it, blended 65/35 with the whole snapshot's median so a thin category cannot run away with a number.</p>
+        <p><b>Momentum.</b> Seven-day TVL change, clamped to minus 60 and plus 120 per cent, counted at 35 per cent weight: capital arriving is a signal, a single week is not a valuation.</p>
+        <p><b>Track record.</b> Days since DefiLlama began tracking the protocol, up to four years, mapped into a 0.75 to 1.20 factor. A protocol that has held TVL for years without a token has more to hand a holder and more reason to launch; one listed last month has not shown that it lasts.</p>
+        <p class="formula">implied = TVL &times; multiple &times; (1 + growth &times; 0.35) &times; record</p>
+      </article>
+      <article>
+        <h2>What the comparables pay</h2>
+        <table class="comps">
+          <thead><tr><th>Category</th><th class="num">Median cap / TVL</th><th class="num">Comparables</th></tr></thead>
+          <tbody id="comps-rows"></tbody>
+        </table>
+        <p class="note" id="comps-note"></p>
+      </article>
+      <article>
+        <h2>What this board does not claim</h2>
+        <p>A protocol that records no token may still have one its DefiLlama record does not carry, and no implied value here is a forecast of a launch or of a price. The figure is the entry's own claim from the snapshot's own numbers, stated so a reader can disagree with it line by line. The watchlist is the floor the house set, never the ceiling: rows below it are the early radar, ranked the same way.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span id="foot-source">-</span>
+  <span>Values are the entry's claims from a sealed snapshot, not make.fun's, and not financial advice.</span>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
