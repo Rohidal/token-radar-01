@@ -109,7 +109,7 @@
       else if (state.sort === 'age') { x = a.age_days === null ? -1 : a.age_days; y = b.age_days === null ? -1 : b.age_days; }
       else { x = a.implied_value_usd; y = b.implied_value_usd; }
       if (x === y) return a.rank - b.rank;
-      return x < y ? state.dir : -state.dir;
+      return x < y ? -state.dir : state.dir;
     });
     return list;
   }

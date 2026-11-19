@@ -1,5 +1,9 @@
 # Launch Radar
 
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/Rohidal/token-radar-01/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/Rohidal/token-radar-01/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+
 A dashboard for protocols that record no token yet: it ranks them by what their own record says a
 launch could be worth, and it gives each one a farm plan a reader can follow before a token exists.
 
@@ -33,3 +37,7 @@ name is special-cased; one function scores every row.
     vendor/               make.fun's dossier library, copied from the kit
     dashboard/            index.html, app.css, app.js: the page, no network
     screenshots/          board, detail view, filtered view
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
